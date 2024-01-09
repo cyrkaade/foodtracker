@@ -1,7 +1,5 @@
 import 'package:appinio_swiper/appinio_swiper.dart';
-import 'package:flashcards_quiz/views/quiz_screen.dart';
 import 'package:flashcards_quiz/widgets/flash_card_widget.dart';
-import 'package:flashcards_quiz/widgets/linear_progress_indicator_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -30,7 +28,6 @@ class _NewCardState extends State<NewCard> {
         getRandomQuestionsAndOptions(widget.typeOfTopic, 4);
 
     List<dynamic> randomQuestions = randomQuestionsMap.keys.toList();
-    dynamic randomOptions = randomQuestionsMap.values.toList();
 
     return Scaffold(
       backgroundColor: bgColor3,
@@ -59,11 +56,6 @@ class _NewCardState extends State<NewCard> {
                         color: Colors.white,
                         weight: 10,
                       ),
-                    ),
-                    MyProgressIndicator(
-                      questionlenght: randomQuestions,
-                      optionsList: randomOptions,
-                      topicType: widget.topicName,
                     ),
                   ],
                 ),
@@ -118,34 +110,7 @@ class _NewCardState extends State<NewCard> {
                       ),
                     ),
                   ),
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(cardColor),
-                      fixedSize: MaterialStateProperty.all(
-                        Size(MediaQuery.sizeOf(context).width * 0.85, 30),
-                      ),
-                      elevation: MaterialStateProperty.all(4),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) => QuizScreen(
-                            questionlenght: randomQuestions,
-                            optionsList: randomOptions,
-                            topicType: widget.topicName,
-                          ),
-                        ),
-                      );
-                    },
-                    child: const Text(
-                      "Start Quiz",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  )
+
                 ],
               ),
             ],

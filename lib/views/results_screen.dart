@@ -16,8 +16,9 @@ class ResultsScreen extends StatelessWidget {
     const Color bgColor3 = Color(0xFF5170FD);
     print(score);
     print(totalQuestions);
-    final double percentageScore = (score / totalQuestions) * 100;
+    final double percentageScore = totalQuestions != 0 ? (score / totalQuestions) * 100 : 0.0;
     final int roundedPercentageScore = percentageScore.round();
+
     const Color cardColor = Color(0xFF4993FA);
     return WillPopScope(
       onWillPop: () {
@@ -50,7 +51,7 @@ class ResultsScreen extends StatelessWidget {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: "Results On Your ",
+                      text: "Results On Your food:",
                       style:
                           Theme.of(context).textTheme.headlineSmall!.copyWith(
                                 color: Colors.white,
@@ -58,30 +59,11 @@ class ResultsScreen extends StatelessWidget {
                                 fontWeight: FontWeight.w400,
                               ),
                     ),
-                    for (var i = 0; i < "Riddles!!!".length; i++) ...[
-                      TextSpan(
-                        text: "Riddles!!!"[i],
-                        style:
-                            Theme.of(context).textTheme.headlineSmall!.copyWith(
-                                  fontSize: 18 + i.toDouble(),
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                      ),
-                    ]
                   ],
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  whichTopic.toUpperCase(),
-                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                        fontSize: 15,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w400,
-                      ),
-                ),
               ),
               ResultsCard(
                   roundedPercentageScore: roundedPercentageScore,
@@ -101,7 +83,7 @@ class ResultsScreen extends StatelessWidget {
                   Navigator.popUntil(context, (route) => route.isFirst);
                 },
                 child: const Text(
-                  "Take another test",
+                  "Make another check",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 15,

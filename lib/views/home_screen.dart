@@ -1,5 +1,4 @@
 import 'package:flashcards_quiz/models/flutter_topics_model.dart';
-import 'package:flashcards_quiz/views/flashcard_screen.dart';
 import 'package:flashcards_quiz/views/loading_screen.dart';
 import 'package:flutter/material.dart';
 

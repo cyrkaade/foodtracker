@@ -37,20 +37,8 @@ class ResultsCard extends StatelessWidget {
                         textAlign: TextAlign.center,
                         text: TextSpan(
                           children: [
-                            for (var ii = 0;
-                                ii < "Congratulations!,".length;
-                                ii++) ...[
-                              TextSpan(
-                                text: "Congratulations!,"[ii],
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium!
-                                    .copyWith(fontSize: 12 + ii.toDouble()),
-                              ),
-                            ],
-                            //m'adamfo(Twi) - my friend
                             TextSpan(
-                              text: "  m'adamfo\n You Scored  \n",
+                              text: "\n The percentage of CO2 is  \n",
                               style: Theme.of(context).textTheme.bodySmall,
                             ),
                             TextSpan(
@@ -79,7 +67,7 @@ class ResultsCard extends StatelessWidget {
                             ? Column(
                                 children: [
                                   Text(
-                                    "You have Earned this Trophy",
+                                    "This is fresh product",
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyLarge!
@@ -97,7 +85,7 @@ class ResultsCard extends StatelessWidget {
                             : Column(
                                 children: [
                                   Text(
-                                    "I know You can do better!!",
+                                    "This is not fresh product",
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyLarge!
