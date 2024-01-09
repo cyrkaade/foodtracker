@@ -1,4 +1,4 @@
-#Wed Jan 10 00:36:19 ALMT 2024
+#Wed Jan 10 00:38:44 ALMT 2024
 base.0=/Users/asiya/Documents/Arslan Code/foodtracker/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

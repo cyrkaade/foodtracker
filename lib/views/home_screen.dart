@@ -86,7 +86,7 @@ class HomePage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MyWidget(),
+                          builder: (context) => LoadingWidget(),
                         ),
                       );
                       print(topicsData.topicName);

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({Key? key}) : super(key: key);
+class LoadingWidget extends StatefulWidget {
+  const LoadingWidget({Key? key}) : super(key: key);
 
   @override
-  State<MyWidget> createState() => _MyWidgetState();
+  State<LoadingWidget> createState() => _LoadingWidgetState();
 }
 
-class _MyWidgetState extends State<MyWidget> {
+class _LoadingWidgetState extends State<LoadingWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
