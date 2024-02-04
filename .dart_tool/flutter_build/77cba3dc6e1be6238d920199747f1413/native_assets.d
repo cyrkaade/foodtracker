@@ -1,0 +1,1 @@
+ C:\\Users\\akish\\frsh\\foodtracker\\.dart_tool\\flutter_build\\77cba3dc6e1be6238d920199747f1413\\native_assets.yaml: 
