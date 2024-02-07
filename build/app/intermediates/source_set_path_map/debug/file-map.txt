@@ -1,13 +1,21 @@
 com.example.flashcards_quiz.app-jetified-annotation-experimental-1.1.0-0 /Users/asiya/.gradle/caches/transforms-3/0fee95e7bbaf2b58c0c6c75e0de9bfc9/transformed/jetified-annotation-experimental-1.1.0/res
 com.example.flashcards_quiz.app-jetified-window-1.0.0-beta04-1 /Users/asiya/.gradle/caches/transforms-3/28b9aeb5ab93347d3b3dbf33d1695662/transformed/jetified-window-1.0.0-beta04/res
 com.example.flashcards_quiz.app-jetified-window-java-1.0.0-beta04-2 /Users/asiya/.gradle/caches/transforms-3/3502e9b36d174efe5dac1e3cc0be1d7f/transformed/jetified-window-java-1.0.0-beta04/res
-com.example.flashcards_quiz.app-core-1.6.0-3 /Users/asiya/.gradle/caches/transforms-3/fe2a86f2413b085f4f3697b26394ffc4/transformed/core-1.6.0/res
-com.example.flashcards_quiz.app-debug-4 /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/debug/res
-com.example.flashcards_quiz.app-main-5 /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/res
-com.example.flashcards_quiz.app-pngs-6 /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/app/generated/res/pngs/debug
-com.example.flashcards_quiz.app-resValues-7 /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/app/generated/res/resValues/debug
-com.example.flashcards_quiz.app-rs-8 /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/app/generated/res/rs/debug
-com.example.flashcards_quiz.app-mergeDebugResources-9 /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/app/intermediates/incremental/debug/mergeDebugResources/merged.dir
-com.example.flashcards_quiz.app-mergeDebugResources-10 /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/app/intermediates/incremental/debug/mergeDebugResources/stripped.dir
-com.example.flashcards_quiz.app-merged_res-11 /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/app/intermediates/merged_res/debug
-com.example.flashcards_quiz.app-packaged_res-12 /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/reactive_ble_mobile/intermediates/packaged_res/debug
+com.example.flashcards_quiz.app-lifecycle-runtime-2.3.1-3 /Users/asiya/.gradle/caches/transforms-3/77a2cbf83bf7ac56b6d611e328ef2e44/transformed/lifecycle-runtime-2.3.1/res
+com.example.flashcards_quiz.app-lifecycle-viewmodel-2.3.1-4 /Users/asiya/.gradle/caches/transforms-3/84b5c781f30c314c28d1fce5df339bab/transformed/lifecycle-viewmodel-2.3.1/res
+com.example.flashcards_quiz.app-jetified-appcompat-resources-1.3.0-5 /Users/asiya/.gradle/caches/transforms-3/8e7e5040b47eb1a79fded801ffb8ecac/transformed/jetified-appcompat-resources-1.3.0/res
+com.example.flashcards_quiz.app-appcompat-1.3.0-6 /Users/asiya/.gradle/caches/transforms-3/975ee0ed43364243e629aa996ce9fb55/transformed/appcompat-1.3.0/res
+com.example.flashcards_quiz.app-fragment-1.3.4-7 /Users/asiya/.gradle/caches/transforms-3/ddfa15a25c51323ebb0a8998ee4f56de/transformed/fragment-1.3.4/res
+com.example.flashcards_quiz.app-jetified-savedstate-1.1.0-8 /Users/asiya/.gradle/caches/transforms-3/e5b36974469a3f469c9e831b84bc2241/transformed/jetified-savedstate-1.1.0/res
+com.example.flashcards_quiz.app-core-1.6.0-9 /Users/asiya/.gradle/caches/transforms-3/fe2a86f2413b085f4f3697b26394ffc4/transformed/core-1.6.0/res
+com.example.flashcards_quiz.app-debug-10 /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/debug/res
+com.example.flashcards_quiz.app-main-11 /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/res
+com.example.flashcards_quiz.app-pngs-12 /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/app/generated/res/pngs/debug
+com.example.flashcards_quiz.app-resValues-13 /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/app/generated/res/resValues/debug
+com.example.flashcards_quiz.app-rs-14 /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/app/generated/res/rs/debug
+com.example.flashcards_quiz.app-mergeDebugResources-15 /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/app/intermediates/incremental/debug/mergeDebugResources/merged.dir
+com.example.flashcards_quiz.app-mergeDebugResources-16 /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/app/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+com.example.flashcards_quiz.app-merged_res-17 /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/app/intermediates/merged_res/debug
+com.example.flashcards_quiz.app-packaged_res-18 /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/flutter_bluetooth_serial/intermediates/packaged_res/debug
+com.example.flashcards_quiz.app-packaged_res-19 /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/permission_handler_android/intermediates/packaged_res/debug
+com.example.flashcards_quiz.app-packaged_res-20 /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/reactive_ble_mobile/intermediates/packaged_res/debug

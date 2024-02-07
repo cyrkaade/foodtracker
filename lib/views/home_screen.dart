@@ -1,6 +1,7 @@
 import 'package:flashcards_quiz/models/flutter_topics_model.dart';
 import 'package:flashcards_quiz/views/loading_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flashcards_quiz/views/scanning_screen.dart';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,13 +18,14 @@ class HomePage extends StatelessWidget {
         elevation: 0, // Remove shadow
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.bluetooth),
-            onPressed: () {
-              // Here you can add what happens when the Bluetooth button is pressed
-              // For example, navigate to a new page where you scan for devices
-              print("Bluetooth button pressed");
-            },
-          ),
+          icon: Icon(Icons.bluetooth),
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => BluetoothDevicesScreen()),
+            );
+          },
+        ),
+
         ],
       ),
       body: SafeArea(
