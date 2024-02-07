@@ -30,7 +30,19 @@
         android:name="android.hardware.bluetooth_le"
         android:required="true" />
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- required for API 23 - 30, no android:maxSdkVersion because of a potential breaking change -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <queries>
+        <intent>
+            <action android:name="android.bluetooth.device.action.FOUND" />
+        </intent>
+        <intent>
+            <action android:name="android.bluetooth.adapter.action.DISCOVERY_FINISHED" />
+        </intent>
+        <intent>
+            <action android:name="android.bluetooth.adapter.action.DISCOVERY_STARTED" />
+        </intent>
+    </queries> <!-- required for API 23 - 30, no android:maxSdkVersion because of a potential breaking change -->
     <!-- TODO: add android:maxSdkVersion on 2.0.0 -->
     <uses-permission-sdk-23 android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission-sdk-23 android:name="android.permission.ACCESS_FINE_LOCATION" />

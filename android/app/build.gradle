@@ -63,6 +63,9 @@ android {
         versionName flutterVersionName
         minSdkVersion 21
         targetSdkVersion 31
+        defaultConfig {
+        targetSdkVersion 31 // or higher
+    }
     }
     configurations.all {
         resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.2'
