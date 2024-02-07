@@ -2,21 +2,22 @@ import 'package:flashcards_quiz/widgets/results_card.dart';
 import 'package:flutter/material.dart';
 
 class ResultsScreen extends StatelessWidget {
+
+  final double score;
+  final int totalQuestions;
+  final String whichTopic;
   const ResultsScreen(
       {super.key,
       required this.score,
       required this.totalQuestions,
       required this.whichTopic});
-  final int score;
-  final int totalQuestions;
-  final String whichTopic;
 
   @override
   Widget build(BuildContext context) {
     const Color bgColor3 = Color(0xFF5170FD);
     print(score);
-    print(totalQuestions);
-    final double percentageScore = totalQuestions != 0 ? (score / totalQuestions) * 100 : 0.0;
+    // final double percentageScore = totalQuestions != 0 ? (score / totalQuestions) * 100 : 0.0;
+    final double percentageScore = score;
     final int roundedPercentageScore = percentageScore.round();
 
     const Color cardColor = Color(0xFF4993FA);
@@ -67,6 +68,8 @@ class ResultsScreen extends StatelessWidget {
               ),
               ResultsCard(
                   roundedPercentageScore: roundedPercentageScore,
+                  ppmValue: percentageScore,
+                  whichTopic: whichTopic,
                   bgColor3: bgColor3),
               const SizedBox(
                 height: 25,

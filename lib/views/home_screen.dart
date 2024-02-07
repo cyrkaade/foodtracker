@@ -97,14 +97,18 @@ class HomePage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final topicsData = flutterTopicsList[index];
                   return GestureDetector(
-                    onTap: () {
+                  onTap: () {
+                      final String topicName = flutterTopicsList[index].topicName; 
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => LoadingWidget(),
+                          builder: (context) => LoadingWidget(
+                            ppmStream: BluetoothManager.instance.ppmStreamController.stream,
+                            whichTopic: topicName,
+                          ),
                         ),
                       );
-                      print(topicsData.topicName);
+                      print(topicName);
                     },
                     child: Card(
                       color: bgColor,

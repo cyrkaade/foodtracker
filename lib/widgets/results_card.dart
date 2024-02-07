@@ -6,14 +6,28 @@ class ResultsCard extends StatelessWidget {
     super.key,
     required this.roundedPercentageScore,
     required this.bgColor3,
+    required this.whichTopic, // Added
+    required this.ppmValue, // Added
   });
 
   final int roundedPercentageScore;
   final Color bgColor3;
+  final String whichTopic; // Added
+  final double ppmValue; // Added
 
   @override
   Widget build(BuildContext context) {
-    const Color bgColor3 = Color(0xFF5170FD);
+    // Determine freshness based on the topic and ppmValue
+    bool isFresh;
+    if (whichTopic == "Milk") {
+      isFresh = ppmValue < 2000; // For Milk, check if less than 2000
+    } else {
+      isFresh = ppmValue < 15; // For Beef, Chicken, and Horse, check if less than 15
+    }
+
+    // Determine the color based on freshness
+    Color scoreColor = isFresh ? Colors.green : Colors.red;
+
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.888,
       height: MediaQuery.of(context).size.height * 0.568,
@@ -38,7 +52,7 @@ class ResultsCard extends StatelessWidget {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: "\n The percentage of CO2 is  \n",
+                              text: "\n The freshness index is  \n",
                               style: Theme.of(context).textTheme.bodySmall,
                             ),
                             TextSpan(
@@ -48,6 +62,7 @@ class ResultsCard extends StatelessWidget {
                                   .bodyLarge!
                                   .copyWith(
                                     fontSize: 30,
+                                    color: scoreColor, // Use dynamic color based on freshness
                                   ),
                             ),
                           ],
@@ -63,7 +78,7 @@ class ResultsCard extends StatelessWidget {
                     child: Center(
                       child: Padding(
                         padding: const EdgeInsets.only(top: 25),
-                        child: roundedPercentageScore >= 75
+                        child: isFresh
                             ? Column(
                                 children: [
                                   Text(
@@ -113,8 +128,7 @@ class ResultsCard extends StatelessWidget {
             child: Container(
               height: 25,
               width: 25,
-              decoration:
-                  const BoxDecoration(color: bgColor3, shape: BoxShape.circle),
+              decoration: BoxDecoration(color: bgColor3, shape: BoxShape.circle),
             ),
           ),
           Positioned(
@@ -123,8 +137,7 @@ class ResultsCard extends StatelessWidget {
             child: Container(
               height: 25,
               width: 25,
-              decoration:
-                  const BoxDecoration(color: bgColor3, shape: BoxShape.circle),
+              decoration: BoxDecoration(color: bgColor3, shape: BoxShape.circle),
             ),
           ),
         ],

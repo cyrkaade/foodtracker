@@ -12,127 +12,124 @@
 12         the Flutter tool needs it to communicate with the running application
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
-15    <uses-permission
-15-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:2:5-67
-16        android:name="android.permission.BLUETOOTH"
-16-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:2:22-65
-17        android:maxSdkVersion="30" />
-17-->[:reactive_ble_mobile] /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/reactive_ble_mobile/intermediates/merged_manifest/debug/AndroidManifest.xml:12:9-35
-18    <uses-permission
-18-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:3:5-73
-19        android:name="android.permission.BLUETOOTH_ADMIN"
-19-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:3:22-71
-20        android:maxSdkVersion="30" />
-20-->[:reactive_ble_mobile] /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/reactive_ble_mobile/intermediates/merged_manifest/debug/AndroidManifest.xml:15:9-35
-21    <!-- Permissions for Android 12 and above -->
-22    <uses-permission
-22-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/debug/AndroidManifest.xml:9:5-119
-23        android:name="android.permission.BLUETOOTH_SCAN"
-23-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/debug/AndroidManifest.xml:9:22-70
-24        android:usesPermissionFlags="neverForLocation" />
-24-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/debug/AndroidManifest.xml:9:71-117
-25    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-25-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:4:5-76
-25-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:4:22-73
-26    <uses-permission android:name="android.permission.INTERNET" />
-26-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/debug/AndroidManifest.xml:11:5-66
-26-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/debug/AndroidManifest.xml:11:22-64
-27    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-27-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:5:5-78
-27-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:5:22-76
-28
-29    <uses-feature
-29-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:6:5-89
-30        android:name="android.hardware.bluetooth_le"
-30-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:6:19-63
-31        android:required="true" />
-31-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:6:64-87
+15    <uses-permission android:name="android.permission.BLUETOOTH" />
+15-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:3:5-105
+15-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:3:22-65
+16    <uses-permission
+16-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:4:5-73
+17        android:name="android.permission.BLUETOOTH_ADMIN"
+17-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:4:22-71
+18        android:maxSdkVersion="30" />
+18-->[:reactive_ble_mobile] /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/reactive_ble_mobile/intermediates/merged_manifest/debug/AndroidManifest.xml:15:9-35
+19    <!-- Permissions for Android 12 and above -->
+20    <uses-permission
+20-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/debug/AndroidManifest.xml:9:5-119
+21        android:name="android.permission.BLUETOOTH_SCAN"
+21-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/debug/AndroidManifest.xml:9:22-70
+22        android:usesPermissionFlags="neverForLocation" />
+22-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/debug/AndroidManifest.xml:9:71-117
+23    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+23-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:5:5-76
+23-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:5:22-73
+24    <uses-permission android:name="android.permission.INTERNET" />
+24-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/debug/AndroidManifest.xml:11:5-66
+24-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/debug/AndroidManifest.xml:11:22-64
+25    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+25-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:6:5-78
+25-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:6:22-76
+26
+27    <uses-feature
+27-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:7:5-89
+28        android:name="android.hardware.bluetooth_le"
+28-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:7:19-63
+29        android:required="true" />
+29-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:7:64-87
+30
+31    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+31-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:8:5-80
+31-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:8:22-78
 32
-33    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-33-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:7:5-80
-33-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:7:22-78
-34
-35    <queries>
-35-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:8:9-18:15
-36        <intent>
-36-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:9:9-11:18
-37            <action android:name="android.bluetooth.device.action.FOUND" />
-37-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:10:13-76
-37-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:10:21-73
-38        </intent>
-39        <intent>
-39-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:12:9-14:18
-40            <action android:name="android.bluetooth.adapter.action.DISCOVERY_FINISHED" />
-40-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:13:13-90
-40-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:13:21-87
-41        </intent>
-42        <intent>
-42-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:15:9-17:18
-43            <action android:name="android.bluetooth.adapter.action.DISCOVERY_STARTED" />
-43-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:16:13-89
-43-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:16:21-86
-44        </intent>
-45    </queries> <!-- required for API 23 - 30, no android:maxSdkVersion because of a potential breaking change -->
-46    <!-- TODO: add android:maxSdkVersion on 2.0.0 -->
-47    <uses-permission-sdk-23 android:name="android.permission.ACCESS_COARSE_LOCATION" />
-47-->[com.polidea.rxandroidble2:rxandroidble:1.16.0] /Users/asiya/.gradle/caches/transforms-3/a7bfe7d9bab7a8c1218b5e085a476668/transformed/jetified-rxandroidble-1.16.0/AndroidManifest.xml:18:5-88
-47-->[com.polidea.rxandroidble2:rxandroidble:1.16.0] /Users/asiya/.gradle/caches/transforms-3/a7bfe7d9bab7a8c1218b5e085a476668/transformed/jetified-rxandroidble-1.16.0/AndroidManifest.xml:18:29-85
-48    <uses-permission-sdk-23 android:name="android.permission.ACCESS_FINE_LOCATION" />
-48-->[com.polidea.rxandroidble2:rxandroidble:1.16.0] /Users/asiya/.gradle/caches/transforms-3/a7bfe7d9bab7a8c1218b5e085a476668/transformed/jetified-rxandroidble-1.16.0/AndroidManifest.xml:19:5-86
-48-->[com.polidea.rxandroidble2:rxandroidble:1.16.0] /Users/asiya/.gradle/caches/transforms-3/a7bfe7d9bab7a8c1218b5e085a476668/transformed/jetified-rxandroidble-1.16.0/AndroidManifest.xml:19:29-83
-49
-50    <application
-51        android:name="android.app.Application"
-52        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-52-->[androidx.core:core:1.6.0] /Users/asiya/.gradle/caches/transforms-3/fe2a86f2413b085f4f3697b26394ffc4/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
-53        android:debuggable="true"
-54        android:icon="@mipmap/ic_launcher"
-55        android:label="flashcards_quiz" >
-56        <activity
-57            android:name="com.example.flashcards_quiz.MainActivity"
-58            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-59            android:exported="true"
-60            android:hardwareAccelerated="true"
-61            android:launchMode="singleTop"
-62            android:theme="@style/LaunchTheme"
-63            android:windowSoftInputMode="adjustResize" >
-64
-65            <!--
-66                 Specifies an Android theme to apply to this Activity as soon as
-67                 the Android process has started. This theme is visible to the user
-68                 while the Flutter UI initializes. After that, this theme continues
-69                 to determine the Window background behind the Flutter UI.
-70            -->
-71            <meta-data
-72                android:name="io.flutter.embedding.android.NormalTheme"
-73                android:resource="@style/NormalTheme" />
-74
-75            <intent-filter>
-76                <action android:name="android.intent.action.MAIN" />
-77
-78                <category android:name="android.intent.category.LAUNCHER" />
-79            </intent-filter>
-80        </activity>
-81        <!--
-82             Don't delete the meta-data below.
-83             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-84        -->
-85        <meta-data
-86            android:name="flutterEmbedding"
-87            android:value="2" />
-88
-89        <uses-library
-89-->[androidx.window:window:1.0.0-beta04] /Users/asiya/.gradle/caches/transforms-3/28b9aeb5ab93347d3b3dbf33d1695662/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
-90            android:name="androidx.window.extensions"
-90-->[androidx.window:window:1.0.0-beta04] /Users/asiya/.gradle/caches/transforms-3/28b9aeb5ab93347d3b3dbf33d1695662/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
-91            android:required="false" />
-91-->[androidx.window:window:1.0.0-beta04] /Users/asiya/.gradle/caches/transforms-3/28b9aeb5ab93347d3b3dbf33d1695662/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
-92        <uses-library
-92-->[androidx.window:window:1.0.0-beta04] /Users/asiya/.gradle/caches/transforms-3/28b9aeb5ab93347d3b3dbf33d1695662/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
-93            android:name="androidx.window.sidecar"
-93-->[androidx.window:window:1.0.0-beta04] /Users/asiya/.gradle/caches/transforms-3/28b9aeb5ab93347d3b3dbf33d1695662/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
-94            android:required="false" />
-94-->[androidx.window:window:1.0.0-beta04] /Users/asiya/.gradle/caches/transforms-3/28b9aeb5ab93347d3b3dbf33d1695662/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
-95    </application>
-96
-97</manifest>
+33    <queries>
+33-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:9:9-19:15
+34        <intent>
+34-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:10:9-12:18
+35            <action android:name="android.bluetooth.device.action.FOUND" />
+35-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:11:13-76
+35-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:11:21-73
+36        </intent>
+37        <intent>
+37-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:13:9-15:18
+38            <action android:name="android.bluetooth.adapter.action.DISCOVERY_FINISHED" />
+38-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:14:13-90
+38-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:14:21-87
+39        </intent>
+40        <intent>
+40-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:16:9-18:18
+41            <action android:name="android.bluetooth.adapter.action.DISCOVERY_STARTED" />
+41-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:17:13-89
+41-->/Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:17:21-86
+42        </intent>
+43    </queries> <!-- required for API 23 - 30, no android:maxSdkVersion because of a potential breaking change -->
+44    <!-- TODO: add android:maxSdkVersion on 2.0.0 -->
+45    <uses-permission-sdk-23 android:name="android.permission.ACCESS_COARSE_LOCATION" />
+45-->[com.polidea.rxandroidble2:rxandroidble:1.16.0] /Users/asiya/.gradle/caches/transforms-3/a7bfe7d9bab7a8c1218b5e085a476668/transformed/jetified-rxandroidble-1.16.0/AndroidManifest.xml:18:5-88
+45-->[com.polidea.rxandroidble2:rxandroidble:1.16.0] /Users/asiya/.gradle/caches/transforms-3/a7bfe7d9bab7a8c1218b5e085a476668/transformed/jetified-rxandroidble-1.16.0/AndroidManifest.xml:18:29-85
+46    <uses-permission-sdk-23 android:name="android.permission.ACCESS_FINE_LOCATION" />
+46-->[com.polidea.rxandroidble2:rxandroidble:1.16.0] /Users/asiya/.gradle/caches/transforms-3/a7bfe7d9bab7a8c1218b5e085a476668/transformed/jetified-rxandroidble-1.16.0/AndroidManifest.xml:19:5-86
+46-->[com.polidea.rxandroidble2:rxandroidble:1.16.0] /Users/asiya/.gradle/caches/transforms-3/a7bfe7d9bab7a8c1218b5e085a476668/transformed/jetified-rxandroidble-1.16.0/AndroidManifest.xml:19:29-83
+47
+48    <application
+49        android:name="android.app.Application"
+50        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+50-->[androidx.core:core:1.6.0] /Users/asiya/.gradle/caches/transforms-3/fe2a86f2413b085f4f3697b26394ffc4/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
+51        android:debuggable="true"
+52        android:icon="@mipmap/ic_launcher"
+53        android:label="flashcards_quiz" >
+54        <activity
+55            android:name="com.example.flashcards_quiz.MainActivity"
+56            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+57            android:exported="true"
+58            android:hardwareAccelerated="true"
+59            android:launchMode="singleTop"
+60            android:theme="@style/LaunchTheme"
+61            android:windowSoftInputMode="adjustResize" >
+62
+63            <!--
+64                 Specifies an Android theme to apply to this Activity as soon as
+65                 the Android process has started. This theme is visible to the user
+66                 while the Flutter UI initializes. After that, this theme continues
+67                 to determine the Window background behind the Flutter UI.
+68            -->
+69            <meta-data
+70                android:name="io.flutter.embedding.android.NormalTheme"
+71                android:resource="@style/NormalTheme" />
+72
+73            <intent-filter>
+74                <action android:name="android.intent.action.MAIN" />
+75
+76                <category android:name="android.intent.category.LAUNCHER" />
+77            </intent-filter>
+78        </activity>
+79        <!--
+80             Don't delete the meta-data below.
+81             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+82        -->
+83        <meta-data
+84            android:name="flutterEmbedding"
+85            android:value="2" />
+86
+87        <uses-library
+87-->[androidx.window:window:1.0.0-beta04] /Users/asiya/.gradle/caches/transforms-3/28b9aeb5ab93347d3b3dbf33d1695662/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+88            android:name="androidx.window.extensions"
+88-->[androidx.window:window:1.0.0-beta04] /Users/asiya/.gradle/caches/transforms-3/28b9aeb5ab93347d3b3dbf33d1695662/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+89            android:required="false" />
+89-->[androidx.window:window:1.0.0-beta04] /Users/asiya/.gradle/caches/transforms-3/28b9aeb5ab93347d3b3dbf33d1695662/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+90        <uses-library
+90-->[androidx.window:window:1.0.0-beta04] /Users/asiya/.gradle/caches/transforms-3/28b9aeb5ab93347d3b3dbf33d1695662/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+91            android:name="androidx.window.sidecar"
+91-->[androidx.window:window:1.0.0-beta04] /Users/asiya/.gradle/caches/transforms-3/28b9aeb5ab93347d3b3dbf33d1695662/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+92            android:required="false" />
+92-->[androidx.window:window:1.0.0-beta04] /Users/asiya/.gradle/caches/transforms-3/28b9aeb5ab93347d3b3dbf33d1695662/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+93    </application>
+94
+95</manifest>

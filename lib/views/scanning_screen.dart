@@ -18,6 +18,9 @@ class _BluetoothDevicesScreenState extends State<BluetoothDevicesScreen> {
   BluetoothConnection? connection;
   bool isConnecting = false;
   bool isDiscovering = false; // Add a new boolean to track discovery status
+  // Add a variable to store the PPM value
+  double ppmValue = 0.0;
+
   
 
   @override
@@ -98,17 +101,25 @@ Future<void> _connect(BluetoothDevice device) async {
       });
 
       // Listen to data coming from Bluetooth
-      connection.input?.listen((data) { // Use the conditional access operator `?.`
-        print('Data incoming: ${String.fromCharCodes(data)}');
+      connection.input?.listen((data) {
+        // Assuming the PPM value is always formatted as "PPM:VALUE"
+        String dataStr = utf8.decode(data);
+        print('Data incoming: $dataStr');
+        if (dataStr.startsWith('PPM:')) {
+          setState(() {
+            ppmValue = double.parse(dataStr.split(':')[1]);
+          });
+        }
         // Process data
       }).onDone(() {
         // Handle disconnection
-        if (this.mounted) { // Check if the widget is still in the widget tree
+        if (this.mounted) {
           setState(() {
             this.connectedDeviceAddress = null; // Clear connected device address on disconnection
           });
         }
       });
+
     } catch (e) {
       print('Cannot connect, exception occurred');
       print(e);
@@ -193,3 +204,52 @@ Widget build(BuildContext context) {
 }
 
 
+class BluetoothManager {
+  static final BluetoothManager _instance = BluetoothManager._internal();
+  BluetoothConnection? connection;
+  double ppmValue = 0.0;
+  StreamController<double> ppmStreamController = StreamController.broadcast();
+
+  factory BluetoothManager() {
+    return _instance;
+  }
+
+  BluetoothManager._internal();
+
+  Future<bool> connectToDevice(String address) async {
+    try {
+      connection = await BluetoothConnection.toAddress(address);
+      connection!.input!.listen((Uint8List data) {
+        String dataStr = utf8.decode(data);
+        if (dataStr.startsWith('PPM:')) {
+          ppmValue = double.parse(dataStr.split(':')[1]);
+          ppmStreamController.add(ppmValue);
+        }
+      }).onDone(() {
+        // Handle disconnection or other cleanup if necessary
+      });
+      return true;
+    } catch (e) {
+      print('Cannot connect, exception occurred: $e');
+      return false;
+    }
+  }
+
+  void dispose() {
+    connection?.dispose();
+    ppmStreamController.close();
+  }
+
+  static BluetoothManager get instance => _instance;
+}
+
+void _connect(BluetoothDevice device) async {
+  bool isConnected = await BluetoothManager.instance.connectToDevice(device.address);
+  if (isConnected) {
+    print('Connected to the device');
+    // Handle UI changes or other logic based on successful connection
+  } else {
+    print('Failed to connect to the device');
+    // Handle UI changes or logic for failed connection
+  }
+}

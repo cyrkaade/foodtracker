@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 application
-INJECTED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:19:5-49:19
+INJECTED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:20:5-50:19
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/asiya/.gradle/caches/transforms-3/28b9aeb5ab93347d3b3dbf33d1695662/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/asiya/.gradle/caches/transforms-3/28b9aeb5ab93347d3b3dbf33d1695662/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.core:core:1.6.0] /Users/asiya/.gradle/caches/transforms-3/fe2a86f2413b085f4f3697b26394ffc4/transformed/core-1.6.0/AndroidManifest.xml:24:5-89
@@ -12,11 +12,11 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/asiy
 	android:name
 		INJECTED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml
 manifest
-ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:1:1-50:12
-INJECTED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:1:1-50:12
-INJECTED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:1:1-50:12
-INJECTED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:1:1-50:12
-MERGED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:1:1-50:12
+ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:2:1-51:12
+INJECTED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:2:1-51:12
+INJECTED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:2:1-51:12
+INJECTED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:2:1-51:12
+MERGED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:2:1-51:12
 MERGED from [:permission_handler_android] /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/permission_handler_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:reactive_ble_mobile] /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/reactive_ble_mobile/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-17:12
 MERGED from [:flutter_bluetooth_serial] /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/flutter_bluetooth_serial/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-14:12
@@ -52,22 +52,24 @@ INJECTED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/
 INJECTED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/debug/AndroidManifest.xml:1:1-12:12
 	package
 		INJECTED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:1:1-50:12
+		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:2:1-51:12
 		INJECTED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/debug/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:1:1-50:12
+		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:2:1-51:12
 		INJECTED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/debug/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:2:70-116
 	android:versionCode
 		INJECTED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:1:1-50:12
+		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:2:1-51:12
 		INJECTED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/debug/AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:1:11-69
+		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:2:11-69
 uses-permission#android.permission.BLUETOOTH
-ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:2:5-67
-MERGED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:2:5-67
-MERGED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:2:5-67
+ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:3:5-105
+MERGED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:3:5-105
+MERGED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:3:5-105
 MERGED from [:reactive_ble_mobile] /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/reactive_ble_mobile/intermediates/merged_manifest/debug/AndroidManifest.xml:10:5-12:38
 MERGED from [:reactive_ble_mobile] /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/reactive_ble_mobile/intermediates/merged_manifest/debug/AndroidManifest.xml:10:5-12:38
 MERGED from [:flutter_bluetooth_serial] /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/flutter_bluetooth_serial/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-68
@@ -75,13 +77,16 @@ MERGED from [:flutter_bluetooth_serial] /Users/asiya/Documents/Arslan Code/fd/fo
 MERGED from [com.polidea.rxandroidble2:rxandroidble:1.16.0] /Users/asiya/.gradle/caches/transforms-3/a7bfe7d9bab7a8c1218b5e085a476668/transformed/jetified-rxandroidble-1.16.0/AndroidManifest.xml:10:5-12:38
 MERGED from [com.polidea.rxandroidble2:rxandroidble:1.16.0] /Users/asiya/.gradle/caches/transforms-3/a7bfe7d9bab7a8c1218b5e085a476668/transformed/jetified-rxandroidble-1.16.0/AndroidManifest.xml:10:5-12:38
 	android:maxSdkVersion
-		ADDED from [:reactive_ble_mobile] /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/reactive_ble_mobile/intermediates/merged_manifest/debug/AndroidManifest.xml:12:9-35
+		REJECTED from [:reactive_ble_mobile] /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/reactive_ble_mobile/intermediates/merged_manifest/debug/AndroidManifest.xml:12:9-35
+		REJECTED from [com.polidea.rxandroidble2:rxandroidble:1.16.0] /Users/asiya/.gradle/caches/transforms-3/a7bfe7d9bab7a8c1218b5e085a476668/transformed/jetified-rxandroidble-1.16.0/AndroidManifest.xml:12:9-35
+	tools:remove
+		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:3:66-102
 	android:name
-		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:2:22-65
+		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:3:22-65
 uses-permission#android.permission.BLUETOOTH_ADMIN
-ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:3:5-73
-MERGED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:3:5-73
-MERGED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:3:5-73
+ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:4:5-73
+MERGED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:4:5-73
+MERGED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:4:5-73
 MERGED from [:reactive_ble_mobile] /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/reactive_ble_mobile/intermediates/merged_manifest/debug/AndroidManifest.xml:13:5-15:38
 MERGED from [:reactive_ble_mobile] /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/reactive_ble_mobile/intermediates/merged_manifest/debug/AndroidManifest.xml:13:5-15:38
 MERGED from [:flutter_bluetooth_serial] /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/flutter_bluetooth_serial/intermediates/merged_manifest/debug/AndroidManifest.xml:10:5-74
@@ -91,53 +96,53 @@ MERGED from [com.polidea.rxandroidble2:rxandroidble:1.16.0] /Users/asiya/.gradle
 	android:maxSdkVersion
 		ADDED from [:reactive_ble_mobile] /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/reactive_ble_mobile/intermediates/merged_manifest/debug/AndroidManifest.xml:15:9-35
 	android:name
-		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:3:22-71
+		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:4:22-71
 uses-permission#android.permission.BLUETOOTH_CONNECT
-ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:4:5-76
-MERGED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:4:5-76
-MERGED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:4:5-76
+ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:5:5-76
+MERGED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:5:5-76
+MERGED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:5:5-76
 MERGED from [com.polidea.rxandroidble2:rxandroidble:1.16.0] /Users/asiya/.gradle/caches/transforms-3/a7bfe7d9bab7a8c1218b5e085a476668/transformed/jetified-rxandroidble-1.16.0/AndroidManifest.xml:21:5-76
 MERGED from [com.polidea.rxandroidble2:rxandroidble:1.16.0] /Users/asiya/.gradle/caches/transforms-3/a7bfe7d9bab7a8c1218b5e085a476668/transformed/jetified-rxandroidble-1.16.0/AndroidManifest.xml:21:5-76
 	android:name
-		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:4:22-73
+		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:5:22-73
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:5:5-78
+ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:6:5-78
 MERGED from [:flutter_bluetooth_serial] /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/flutter_bluetooth_serial/intermediates/merged_manifest/debug/AndroidManifest.xml:12:5-79
 MERGED from [:flutter_bluetooth_serial] /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/flutter_bluetooth_serial/intermediates/merged_manifest/debug/AndroidManifest.xml:12:5-79
 	android:name
-		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:5:22-76
+		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:6:22-76
 uses-feature#android.hardware.bluetooth_le
-ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:6:5-89
+ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:7:5-89
 	android:required
-		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:6:64-87
+		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:7:64-87
 	android:name
-		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:6:19-63
+		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:7:19-63
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:7:5-80
+ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:8:5-80
 MERGED from [:flutter_bluetooth_serial] /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/flutter_bluetooth_serial/intermediates/merged_manifest/debug/AndroidManifest.xml:11:5-81
 MERGED from [:flutter_bluetooth_serial] /Users/asiya/Documents/Arslan Code/fd/foodtracker/build/flutter_bluetooth_serial/intermediates/merged_manifest/debug/AndroidManifest.xml:11:5-81
 	android:name
-		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:7:22-78
+		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:8:22-78
 queries
-ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:8:9-18:15
+ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:9:9-19:15
 intent#action:name:android.bluetooth.device.action.FOUND
-ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:9:9-11:18
+ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:10:9-12:18
 action#android.bluetooth.device.action.FOUND
-ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:10:13-76
+ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:11:13-76
 	android:name
-		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:10:21-73
+		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:11:21-73
 intent#action:name:android.bluetooth.adapter.action.DISCOVERY_FINISHED
-ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:12:9-14:18
+ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:13:9-15:18
 action#android.bluetooth.adapter.action.DISCOVERY_FINISHED
-ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:13:13-90
+ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:14:13-90
 	android:name
-		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:13:21-87
+		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:14:21-87
 intent#action:name:android.bluetooth.adapter.action.DISCOVERY_STARTED
-ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:15:9-17:18
+ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:16:9-18:18
 action#android.bluetooth.adapter.action.DISCOVERY_STARTED
-ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:16:13-89
+ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:17:13-89
 	android:name
-		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:16:21-86
+		ADDED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml:17:21-86
 uses-sdk
 INJECTED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/asiya/Documents/Arslan Code/fd/foodtracker/android/app/src/main/AndroidManifest.xml
