@@ -2,7 +2,6 @@ import 'package:flashcards_quiz/models/flutter_topics_model.dart';
 import 'package:flashcards_quiz/views/loading_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flashcards_quiz/views/scanning_screen.dart';
-import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
