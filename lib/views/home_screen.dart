@@ -1,6 +1,7 @@
 import 'package:flashcards_quiz/models/flutter_topics_model.dart';
 import 'package:flashcards_quiz/views/loading_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -11,6 +12,20 @@ class HomePage extends StatelessWidget {
     const Color bgColor3 = Color(0xFF5170FD);
     return Scaffold(
       backgroundColor: bgColor3,
+      appBar: AppBar(
+        backgroundColor: bgColor3, // Use the same background color for the app bar
+        elevation: 0, // Remove shadow
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.bluetooth),
+            onPressed: () {
+              // Here you can add what happens when the Bluetooth button is pressed
+              // For example, navigate to a new page where you scan for devices
+              print("Bluetooth button pressed");
+            },
+          ),
+        ],
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(top: 0, left: 15, right: 15),

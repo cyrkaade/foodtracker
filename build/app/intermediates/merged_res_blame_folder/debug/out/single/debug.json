@@ -1,9 +1,5 @@
 [
     {
-        "merged": "com.example.flashcards_quiz.app-merged_res-11:/drawable_launch_background.xml.flat",
-        "source": "com.example.flashcards_quiz.app-main-5:/drawable/launch_background.xml"
-    },
-    {
         "merged": "com.example.flashcards_quiz.app-merged_res-11:/mipmap-xhdpi_ic_launcher.png.flat",
         "source": "com.example.flashcards_quiz.app-main-5:/mipmap-xhdpi/ic_launcher.png"
     },

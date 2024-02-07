@@ -38,6 +38,7 @@ dependencies:
   flip_card: ^0.7.0
   appinio_swiper: ^2.0.2
   lottie: ^1.2.1
+  flutter_reactive_ble: ^5.0.1
 
 dev_dependencies:
   flutter_test:
