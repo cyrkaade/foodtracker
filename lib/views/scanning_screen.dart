@@ -208,11 +208,11 @@ class BluetoothManager {
   static final BluetoothManager _instance = BluetoothManager._internal();
   BluetoothConnection? connection;
   double ppmValue = 0.0;
-  StreamController<double> ppmStreamController = StreamController.broadcast();
+  double ammonia = 0.0;
 
-  factory BluetoothManager() {
-    return _instance;
-  }
+  // Use two StreamControllers to separately stream ppmValue and ammonia values
+  StreamController<double> ppmStreamController = StreamController.broadcast();
+  StreamController<double> ammoniaStreamController = StreamController.broadcast();
 
   BluetoothManager._internal();
 
@@ -220,10 +220,22 @@ class BluetoothManager {
     try {
       connection = await BluetoothConnection.toAddress(address);
       connection!.input!.listen((Uint8List data) {
-        String dataStr = utf8.decode(data);
-        if (dataStr.startsWith('PPM:')) {
-          ppmValue = double.parse(dataStr.split(':')[1]);
-          ppmStreamController.add(ppmValue);
+        String dataStr = utf8.decode(data).trim();
+        // Check if the incoming data starts with a specific prefix, if needed
+        // For now, we'll assume direct numeric values are being sent
+        try {
+          double value = double.parse(dataStr);
+          if (value > 100) {
+            // If the value is more than 100, consider it as ppmValue
+            ppmValue = value;
+            ppmStreamController.add(ppmValue); // Send the value to the ppm stream
+          } else {
+            // If the value is less than or equal to 100, consider it as ammonia
+            ammonia = value;
+            ammoniaStreamController.add(ammonia); // Send the value to the ammonia stream
+          }
+        } catch (e) {
+          print('Error parsing incoming data: $e');
         }
       }).onDone(() {
         // Handle disconnection or other cleanup if necessary
@@ -238,6 +250,7 @@ class BluetoothManager {
   void dispose() {
     connection?.dispose();
     ppmStreamController.close();
+    ammoniaStreamController.close();
   }
 
   static BluetoothManager get instance => _instance;

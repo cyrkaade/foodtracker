@@ -105,6 +105,7 @@ class HomePage extends StatelessWidget {
                           builder: (context) => LoadingWidget(
                             ppmStream: BluetoothManager.instance.ppmStreamController.stream,
                             whichTopic: topicName,
+                            ammoniaStream: BluetoothManager.instance.ammoniaStreamController.stream,
                           ),
                         ),
                       );
