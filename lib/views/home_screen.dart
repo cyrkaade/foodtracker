@@ -5,6 +5,7 @@ import 'package:flashcards_quiz/views/scanning_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+  
 
   @override
   Widget build(BuildContext context) {
@@ -157,3 +158,87 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+
+
+
+// class HomePage extends StatelessWidget {
+//   const HomePage({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     const Color bgColor = Color(0xFF4993FA);
+//     const Color bgColor3 = Color(0xFF5170FD);
+
+//     return Scaffold(
+//       backgroundColor: bgColor3,
+//       appBar: AppBar(
+//         backgroundColor: bgColor3,
+//         elevation: 0,
+//         actions: <Widget>[
+//           IconButton(
+//             icon: Icon(Icons.bluetooth),
+//             onPressed: () {
+//               Navigator.of(context).push(
+//                 MaterialPageRoute(builder: (context) => BluetoothDevicesScreen()),
+//               );
+//             },
+//           ),
+//         ],
+//       ),
+//       body: SafeArea(
+//         child: Padding(
+//           padding: const EdgeInsets.only(top: 0, left: 15, right: 15),
+//           child: ListView(
+//             physics: const BouncingScrollPhysics(),
+//             children: [
+//               // Other widgets remain unchanged
+              
+//               // For demonstration, let's assume you're interested in showing a list of topics
+//               // and passing the latest PPM value to LoadingWidget when a topic is selected.
+//               StreamBuilder<double>(
+//                 stream: BluetoothManager.instance.ppmStreamController.stream,
+//                 builder: (context, snapshot) {
+//                   // Check if we have a valid PPM value
+//                   double latestPpmValue = snapshot.data ?? 0.0; // Default to 0 or handle appropriately
+
+//                   // Your GridView.builder or any widget that needs the PPM value
+//                   return GridView.builder(
+//                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+//                       crossAxisCount: 2,
+//                       mainAxisSpacing: 10,
+//                       crossAxisSpacing: 10,
+//                       childAspectRatio: 0.85,
+//                     ),
+//                     shrinkWrap: true,
+//                     physics: const NeverScrollableScrollPhysics(), // Fix scrolling issues within ListView
+//                     itemCount: flutterTopicsList.length,
+//                     itemBuilder: (context, index) {
+//                       final topicsData = flutterTopicsList[index];
+//                       return GestureDetector(
+//                         onTap: () {
+//                           Navigator.push(
+//                             context,
+//                             MaterialPageRoute(
+//                               builder: (context) => LoadingWidget(
+//                                 ppmStream: BluetoothManager.instance.ppmStreamController.stream,
+//                                 whichTopic: topicsData.topicName,
+//                                 ammoniaStream: BluetoothManager.instance.ammoniaStreamController.stream,
+//                                 latestPpmValue: latestPpmValue, // Pass the latest PPM value
+//                               ),
+//                             ),
+//                           );
+//                         },
+//                         // Your Card widget remains unchanged
+//                       );
+//                     },
+//                   );
+//                 },
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

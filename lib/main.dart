@@ -1,11 +1,14 @@
 import 'package:flashcards_quiz/views/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flashcards_quiz/views/scanning_screen.dart';
+import 'package:flashcards_quiz/widgets/gbdl.dart';
 
 void main() {
   runApp(
-    const MyApp(),
+    GlobalBluetoothDataStream(child: MyApp()),
   );
+  BluetoothManager.instance;
   SystemChrome.setPreferredOrientations(
     [
       DeviceOrientation.portraitUp,

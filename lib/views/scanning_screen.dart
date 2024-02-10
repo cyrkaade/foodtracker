@@ -51,6 +51,7 @@ void _sendMessage(String text) async {
   }
 }
 
+
 void _discoverDevices() async {
   // Request necessary permissions at runtime. Adjust according to your needs.
 Map<Permission, PermissionStatus> statuses = await [
