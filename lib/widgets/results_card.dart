@@ -2,27 +2,30 @@ import 'package:flashcards_quiz/widgets/dotted_lines.dart';
 import 'package:flutter/material.dart';
 
 class ResultsCard extends StatelessWidget {
-  const ResultsCard({
-    super.key,
-    required this.roundedPercentageScore,
-    required this.bgColor3,
-    required this.whichTopic, // Added
-    required this.ppmValue, // Added
-  });
-
-  final int roundedPercentageScore;
+  
+  final int ppmValue;
+  final int ammoniaValue;
+  final double phValue;
+  final String whichTopic;
   final Color bgColor3;
-  final String whichTopic; // Added
-  final double ppmValue; // Added
+
+  const ResultsCard({
+    Key? key,
+    required this.ppmValue,
+    required this.ammoniaValue,
+    required this.phValue,
+    required this.whichTopic,
+    required this.bgColor3,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     // Determine freshness based on the topic and ppmValue
     bool isFresh;
     if (whichTopic == "Milk") {
-      isFresh = ppmValue < 2000; // For Milk, check if less than 2000
+      isFresh = ppmValue < 2000 && phValue > 6.5; // For Milk, check if less than 2000
     } else {
-      isFresh = ppmValue < 15; // For Beef, Chicken, and Horse, check if less than 15
+      isFresh = ammoniaValue < 15; // For Beef, Chicken, and Horse, check if less than 15
     }
 
     // Determine the color based on freshness
@@ -56,7 +59,7 @@ class ResultsCard extends StatelessWidget {
                               style: Theme.of(context).textTheme.bodySmall,
                             ),
                             TextSpan(
-                              text: "$roundedPercentageScore%",
+                              text: "$ppmValue",
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyLarge!

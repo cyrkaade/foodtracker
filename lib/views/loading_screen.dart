@@ -7,12 +7,14 @@ class LoadingWidget extends StatefulWidget {
   final Stream<double> ppmStream;
   final Stream<double> ammoniaStream;
   final String whichTopic;
+  final Stream<double> phStream;
 
   const LoadingWidget({
     Key? key, 
     required this.ppmStream, 
     required this.ammoniaStream, 
     required this.whichTopic,
+    required this.phStream,
   }) : super(key: key);
 
   @override
@@ -20,32 +22,70 @@ class LoadingWidget extends StatefulWidget {
 }
 
 class _LoadingWidgetState extends State<LoadingWidget> {
-  double latestValue = 0.0;
+  double latestPpmValue = 0.0;
+  double latestPhValue = 0.0;
+  double latestAmmoniaValue = 0.0;
 
-  @override
+  late final StreamSubscription<double> _ppmSubscription;
+  late final StreamSubscription<double> _phSubscription;
+  late final StreamSubscription<double> _ammoniaSubscription;
+
+@override
   void initState() {
     super.initState();
-    // Listen to the appropriate stream based on `whichTopic`
-    Stream<double> relevantStream = widget.whichTopic == "Milk" ? widget.ammoniaStream : widget.ppmStream;
-    relevantStream.listen((value) {
-      setState(() {
-        latestValue = value;
-      });
-    });
-    // Delay and then navigate to ResultsScreen
-    Future.delayed(Duration(seconds: 4), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ResultsScreen(
-            score: latestValue,
-            totalQuestions: 0,
-            whichTopic: widget.whichTopic, // Use the passed whichTopic here
-          ),
-        ),
-      );
-    });
+    _ppmSubscription = widget.ppmStream.listen((value) => updateValue(value, 'ppm'));
+    _ammoniaSubscription = widget.ammoniaStream.listen((value) => updateValue(value, 'ammonia')); // Listen for ammonia
+    _phSubscription = widget.phStream.listen((value) => updateValue(value, 'ph'));
+
+    Future.delayed(Duration(seconds: 4), navigateToResults);
   }
+
+  void updateValue(double value, String type) {
+    if (mounted) {
+      setState(() {
+        if (type == 'ppm') latestPpmValue = value;
+        else if (type == 'ammonia') latestAmmoniaValue = value; // Update ammonia
+        else if (type == 'ph') latestPhValue = value;
+      });
+    }
+  }
+
+  void navigateToResults() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ResultsScreen(
+          ppmValue: latestPpmValue,
+          ammoniaValue: latestAmmoniaValue, // Pass ammonia
+          phValue: latestPhValue,
+          whichTopic: widget.whichTopic,
+        ),
+      ),
+    );
+  }
+
+
+  @override
+  void dispose() {
+    _ppmSubscription.cancel();
+    _ammoniaSubscription.cancel(); // Dispose ammonia subscription
+    _phSubscription.cancel();
+    super.dispose();
+  }
+
+void navigateToResultScreen() {
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(
+      builder: (context) => ResultsScreen(
+        ppmValue: latestPpmValue,
+        ammoniaValue: latestAmmoniaValue,
+        phValue: latestPhValue,
+        whichTopic: widget.whichTopic, // Assuming this is not used for now
+      ),
+    ),
+  );
+}
 
   @override
   Widget build(BuildContext context) {

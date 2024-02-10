@@ -2,23 +2,26 @@ import 'package:flashcards_quiz/widgets/results_card.dart';
 import 'package:flutter/material.dart';
 
 class ResultsScreen extends StatelessWidget {
-
-  final double score;
-  final int totalQuestions;
+  final double ppmValue;
+  final double ammoniaValue; // Added for ammonia
+  final double phValue;
   final String whichTopic;
-  const ResultsScreen(
-      {super.key,
-      required this.score,
-      required this.totalQuestions,
-      required this.whichTopic});
+
+  const ResultsScreen({
+    super.key,
+    required this.ppmValue,
+    required this.ammoniaValue, // Include ammonia in constructor
+    required this.phValue,
+    required this.whichTopic,
+  });
 
   @override
   Widget build(BuildContext context) {
     const Color bgColor3 = Color(0xFF5170FD);
-    print(score);
     // final double percentageScore = totalQuestions != 0 ? (score / totalQuestions) * 100 : 0.0;
-    final double percentageScore = score;
-    final int roundedPercentageScore = percentageScore.round();
+    final int roundedppmValue = ppmValue.round();
+    final int roundedammoniaValue = ammoniaValue.round();
+    final double roundedphValue = phValue;
 
     const Color cardColor = Color(0xFF4993FA);
     return WillPopScope(
@@ -67,10 +70,12 @@ class ResultsScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
               ),
               ResultsCard(
-                  roundedPercentageScore: roundedPercentageScore,
-                  ppmValue: percentageScore,
-                  whichTopic: whichTopic,
-                  bgColor3: bgColor3),
+                        ppmValue: roundedppmValue,
+                        ammoniaValue: roundedammoniaValue, // Pass ammonia
+                        phValue: roundedphValue,
+                        whichTopic: whichTopic,
+                        bgColor3: cardColor,
+                      ),
               const SizedBox(
                 height: 25,
               ),

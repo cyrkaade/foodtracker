@@ -4,6 +4,7 @@ import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'dart:typed_data';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:convert'; 
+import 'package:rxdart/rxdart.dart';
 
 class BluetoothDevicesScreen extends StatefulWidget {
   @override
@@ -20,6 +21,8 @@ class _BluetoothDevicesScreenState extends State<BluetoothDevicesScreen> {
   bool isDiscovering = false; // Add a new boolean to track discovery status
   // Add a variable to store the PPM value
   double ppmValue = 0.0;
+  double ph = 0.0;
+  int dataTypeCounter = 0;
 
   
 
@@ -51,6 +54,23 @@ void _sendMessage(String text) async {
   }
 }
 
+void reconnectToDevice() async {
+  if (connectedDeviceAddress != null) {
+    try {
+      final BluetoothConnection newConnection = await BluetoothConnection.toAddress(connectedDeviceAddress!);
+      setState(() {
+        connection = newConnection;
+        // Update UI or state as necessary
+      });
+      // Set up the listener for the new connection as before
+    } catch (e) {
+      print('Error reconnecting to device: $e');
+      setState(() {
+        // Handle error state
+      });
+    }
+  }
+}
 
 void _discoverDevices() async {
   // Request necessary permissions at runtime. Adjust according to your needs.
@@ -90,6 +110,9 @@ Map<Permission, PermissionStatus> statuses = await [
 
 Future<void> _connect(BluetoothDevice device) async {
   // Simplified connection method with permission checks
+
+  // Update UI based on connection status
+
   if (await Permission.bluetoothConnect.request().isGranted) {
     try {
       final BluetoothConnection connection = await BluetoothConnection.toAddress(device.address);
@@ -102,24 +125,26 @@ Future<void> _connect(BluetoothDevice device) async {
       });
 
       // Listen to data coming from Bluetooth
-      connection.input?.listen((data) {
-        // Assuming the PPM value is always formatted as "PPM:VALUE"
-        String dataStr = utf8.decode(data);
-        print('Data incoming: $dataStr');
-        if (dataStr.startsWith('PPM:')) {
-          setState(() {
-            ppmValue = double.parse(dataStr.split(':')[1]);
-          });
-        }
-        // Process data
-      }).onDone(() {
-        // Handle disconnection
-        if (this.mounted) {
-          setState(() {
-            this.connectedDeviceAddress = null; // Clear connected device address on disconnection
-          });
-        }
-      });
+connection.input?.listen((Uint8List data) {
+  String dataStr = utf8.decode(data).trim();
+  if (dataStr.startsWith("PPM:")) {
+    final value = double.tryParse(dataStr.substring(4)) ?? 0.0;
+    BluetoothManager.instance.ppmStreamController.add(value);
+  } else if (dataStr.startsWith("AMM:")) {
+    final value = double.tryParse(dataStr.substring(4)) ?? 0.0;
+    BluetoothManager.instance.ammoniaStreamController.add(value);
+  } else if (dataStr.startsWith("PH:")) {
+    final value = double.tryParse(dataStr.substring(3)) ?? 0.0;
+    BluetoothManager.instance.phStreamController.add(value);
+  }
+}).onDone(() {
+  if (this.mounted) {
+    setState(() {
+      this.connectedDeviceAddress = null; // Clear connected device address on disconnection
+    });
+  }
+});
+
 
     } catch (e) {
       print('Cannot connect, exception occurred');
@@ -141,7 +166,6 @@ Future<void> _connect(BluetoothDevice device) async {
 
 @override
 void dispose() {
-  connection?.dispose();
   streamController.close();
   super.dispose();
 }
@@ -152,14 +176,7 @@ Widget build(BuildContext context) {
     appBar: AppBar(
       title: Text("Select a Bluetooth Device"),
       actions: <Widget>[
-        isDiscovering
-            ? CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-              )
-            : IconButton(
-                icon: Icon(Icons.refresh),
-                onPressed: _discoverDevices,
-              ),
+        // Refresh button logic remains the same
       ],
     ),
     body: Column(
@@ -169,101 +186,114 @@ Widget build(BuildContext context) {
             itemCount: devices.length,
             itemBuilder: (context, index) {
               BluetoothDevice device = devices[index];
-              bool deviceIsConnected = connectedDeviceAddress == device.address;
-              return ListTile(
-                leading: Icon(Icons.bluetooth),
-                title: Text(device.name ?? "Unknown Device"),
-                subtitle: Text(device.address),
-                trailing: Text(deviceIsConnected ? "Connected" : "Not connected"),
-                onTap: () => _connect(device),
-              );
-            },
-          ),
-        ),
-        if (isConnected) ...[
-          TextField(
-            controller: textEditingController,
-            decoration: InputDecoration(
-              labelText: "Send a message",
-              suffixIcon: IconButton(
-                icon: Icon(Icons.send),
-                onPressed: () => _sendMessage(textEditingController.text),
+              return StreamBuilder<bool>(
+                stream: BluetoothManager.instance.isConnected.stream,
+                builder: (context, snapshot) {
+                  bool isConnected = snapshot.data ?? false;
+                  // Check against the stored connectedDeviceAddress
+                  bool deviceIsConnected = isConnected && BluetoothManager.instance.connectedDeviceAddress == device.address;
+                  return ListTile(
+                    leading: Icon(Icons.bluetooth),
+                    title: Text(device.name ?? "Unknown Device"),
+                    subtitle: Text(device.address),
+                    trailing: Text(deviceIsConnected ? "Connected" : "Not connected"),
+                    onTap: deviceIsConnected ? null : () => _connect(device),
+                  );
+                },
+                  );
+                },
               ),
-            ),
-          ),
-          StreamBuilder<String>(
-            stream: streamController.stream,
-            builder: (context, snapshot) {
-              return Text(snapshot.hasData ? snapshot.data! : "");
-            },
-          ),
-        ]
+        ),
+
+        // Dynamically show the message field if a device is connected
+        StreamBuilder<bool>(
+          stream: BluetoothManager.instance.isConnected.stream,
+          builder: (context, snapshot) {
+            bool isConnected = snapshot.data ?? false;
+            if (isConnected) {
+              return Column(
+                children: [
+                  TextField(
+                    controller: textEditingController,
+                    decoration: InputDecoration(
+                      labelText: "Send a message",
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.send),
+                        onPressed: () => _sendMessage(textEditingController.text),
+                      ),
+                    ),
+                  ),
+                  StreamBuilder<String>(
+                    stream: streamController.stream,
+                    builder: (context, snapshot) {
+                      return Text(snapshot.hasData ? snapshot.data! : "");
+                    },
+                  ),
+                ],
+              );
+            } else {
+              return Container(); // Return an empty container if not connected
+            }
+          },
+        ),
       ],
     ),
   );
 }
 }
 
-
 class BluetoothManager {
   static final BluetoothManager _instance = BluetoothManager._internal();
+  
   BluetoothConnection? connection;
+  BehaviorSubject<double> ppmStreamController = BehaviorSubject<double>();
+  BehaviorSubject<double> ammoniaStreamController = BehaviorSubject<double>();
+  BehaviorSubject<double> phStreamController = BehaviorSubject<double>();
+  BehaviorSubject<bool> isConnected = BehaviorSubject.seeded(false);
+  
+  String? connectedDeviceAddress; 
   double ppmValue = 0.0;
   double ammonia = 0.0;
-
+  double ph = 0.0;
+  
   // Use two StreamControllers to separately stream ppmValue and ammonia values
-  StreamController<double> ppmStreamController = StreamController.broadcast();
-  StreamController<double> ammoniaStreamController = StreamController.broadcast();
+  // StreamController<double> ppmStreamController = StreamController.broadcast();
+  // StreamController<double> ammoniaStreamController = StreamController.broadcast();
 
   BluetoothManager._internal();
 
-  Future<bool> connectToDevice(String address) async {
-    try {
-      connection = await BluetoothConnection.toAddress(address);
-      connection!.input!.listen((Uint8List data) {
-        String dataStr = utf8.decode(data).trim();
-        // Check if the incoming data starts with a specific prefix, if needed
-        // For now, we'll assume direct numeric values are being sent
-        try {
-          double value = double.parse(dataStr);
-          if (value > 100) {
-            // If the value is more than 100, consider it as ppmValue
-            ppmValue = value;
-            ppmStreamController.add(ppmValue); // Send the value to the ppm stream
-          } else {
-            // If the value is less than or equal to 100, consider it as ammonia
-            ammonia = value;
-            ammoniaStreamController.add(ammonia); // Send the value to the ammonia stream
-          }
-        } catch (e) {
-          print('Error parsing incoming data: $e');
-        }
-      }).onDone(() {
-        // Handle disconnection or other cleanup if necessary
-      });
-      return true;
-    } catch (e) {
-      print('Cannot connect, exception occurred: $e');
-      return false;
+
+  String? lastConnectedDeviceAddress;
+
+Future<void> connectToDevice(String address) async {
+    if (connection == null || !connection!.isConnected) {
+      try {
+        connection = await BluetoothConnection.toAddress(address);
+        isConnected.add(true); // Notify that the device is connected
+        connectedDeviceAddress = address; // Store the connected device address
+      } catch (e) {
+        print('Error connecting to device: $e');
+        isConnected.add(false); // Notify that the device is not connected
+        connectedDeviceAddress = null; // Clear the connected device address
+      }
     }
   }
 
-  void dispose() {
-    connection?.dispose();
-    ppmStreamController.close();
-    ammoniaStreamController.close();
+  void disconnectFromDevice() async {
+    if (connection != null && connection!.isConnected) {
+      await connection!.close();
+      connection = null;
+      isConnected.add(false); // Notify that the device is disconnected
+      connectedDeviceAddress = null; // Clear the connected device address
+    }
   }
+
+  bool get isDeviceConnected => connection?.isConnected ?? false;
 
   static BluetoothManager get instance => _instance;
 }
 
-void _connect(BluetoothDevice device) async {
-  bool isConnected = await BluetoothManager.instance.connectToDevice(device.address);
-  if (isConnected) {
-    print('Connected to the device');
-    // Handle UI changes or other logic based on successful connection
-  } else {
-    print('Failed to connect to the device');
-    // Handle UI changes or logic for failed connection
-  }
+Future<void> _connect(BluetoothDevice device) async {
+  await BluetoothManager.instance.connectToDevice(device.address);
+  // Update UI based on connection status
 }

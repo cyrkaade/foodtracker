@@ -2,10 +2,61 @@ import 'package:flashcards_quiz/models/flutter_topics_model.dart';
 import 'package:flashcards_quiz/views/loading_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flashcards_quiz/views/scanning_screen.dart';
+import 'dart:async';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  // Create StreamSubscriptions to listen to the ppm and ammonia streams
+  double ppmValue = 0.0; // Initial ppm value
+  double ammoniaValue = 0.0; // Initial ammonia value
+  double phValue = 0.0;
+  late StreamSubscription<double>? ppmSubscription;
+  late StreamSubscription<double>? ammoniaSubscription;
+  late StreamSubscription<double> phSubscription;
+
+  @override
+  void initState() {
+    super.initState();
+    // Subscribe to the ppm and ammonia streams from BluetoothManager
+    ppmSubscription = BluetoothManager.instance.ppmStreamController.stream.listen(
+      (value) {
+        setState(() {
+          ppmValue = value; // Update ppm value on data arrival
+        });
+      },
+    );
+
+    ammoniaSubscription = BluetoothManager.instance.ammoniaStreamController.stream.listen(
+      (value) {
+        setState(() {
+          ammoniaValue = value; // Update ammonia value on data arrival
+        });
+      },
+    );
+    phSubscription = BluetoothManager.instance.phStreamController.stream.listen(
+      (value) {
+        setState(() {
+          phValue = value; // Update pH value on data arrival
+        });
+      },
+    );
+  }
   
+
+  @override
+  void dispose() {
+    // Cancel the subscriptions when the widget is disposed
+    ppmSubscription?.cancel();
+    ammoniaSubscription?.cancel();
+    phSubscription.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,18 +65,17 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: bgColor3,
       appBar: AppBar(
-        backgroundColor: bgColor3, // Use the same background color for the app bar
-        elevation: 0, // Remove shadow
+        backgroundColor: bgColor3,
+        elevation: 0,
         actions: <Widget>[
           IconButton(
-          icon: Icon(Icons.bluetooth),
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => BluetoothDevicesScreen()),
-            );
-          },
-        ),
-
+            icon: Icon(Icons.bluetooth),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => BluetoothDevicesScreen()),
+              );
+            },
+          ),
         ],
       ),
       body: SafeArea(
@@ -50,7 +100,28 @@ class HomePage extends StatelessWidget {
                 child: Image.asset("assets/dash.png"),
               ),
               const SizedBox(
+                height: 30,
+              ),
+              Text(
+      'Current ppm Value: $ppmValue',
+      style: TextStyle(color: Colors.white, fontSize: 16),
+    ),
+    const SizedBox(
                 height: 10,
+              ),
+    Text(
+      'Current ammonia Value: $ammoniaValue',
+      style: TextStyle(color: Colors.white, fontSize: 16),
+    ),
+    const SizedBox(
+                height: 10,
+              ),
+    Text(
+      'Current pH Value: $phValue',
+      style: TextStyle(color: Colors.white, fontSize: 16),
+    ),
+        const SizedBox(
+                height: 40,
               ),
               Center(
                 child: RichText(
@@ -85,6 +156,12 @@ class HomePage extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
+              StreamBuilder<double>(
+                stream: BluetoothManager.instance.ppmStreamController.stream,
+                builder: (context, snapshot) {
+                  return Container(); // Placeholder or loading indicator
+                },
+              ),
               GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
@@ -98,8 +175,8 @@ class HomePage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final topicsData = flutterTopicsList[index];
                   return GestureDetector(
-                  onTap: () {
-                      final String topicName = flutterTopicsList[index].topicName; 
+                    onTap: () {
+                      final String topicName = topicsData.topicName;
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -107,10 +184,10 @@ class HomePage extends StatelessWidget {
                             ppmStream: BluetoothManager.instance.ppmStreamController.stream,
                             whichTopic: topicName,
                             ammoniaStream: BluetoothManager.instance.ammoniaStreamController.stream,
+                            phStream: BluetoothManager.instance.phStreamController.stream,
                           ),
                         ),
                       );
-                      print(topicName);
                     },
                     child: Card(
                       color: bgColor,
