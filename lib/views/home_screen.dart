@@ -175,8 +175,11 @@ class _HomePageState extends State<HomePage> {
                 itemBuilder: (context, index) {
                   final topicsData = flutterTopicsList[index];
                   return GestureDetector(
-                    onTap: () {
+                    onTap: () async {
                       final String topicName = topicsData.topicName;
+                      if (BluetoothManager.instance.isDeviceConnected) {
+                      await BluetoothManager.instance.sendMessage("ON");
+                    }
                       Navigator.push(
                         context,
                         MaterialPageRoute(

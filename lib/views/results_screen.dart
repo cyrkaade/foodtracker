@@ -1,5 +1,6 @@
 import 'package:flashcards_quiz/widgets/results_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flashcards_quiz/views/scanning_screen.dart';
 
 class ResultsScreen extends StatelessWidget {
   final double ppmValue;
@@ -25,7 +26,10 @@ class ResultsScreen extends StatelessWidget {
 
     const Color cardColor = Color(0xFF4993FA);
     return WillPopScope(
-      onWillPop: () {
+      onWillPop: () async {
+        if (BluetoothManager.instance.isDeviceConnected) {
+        await BluetoothManager.instance.sendMessage("OFF");
+      }
         Navigator.popUntil(context, (route) => route.isFirst);
         return Future.value(false);
       },
@@ -87,7 +91,10 @@ class ResultsScreen extends StatelessWidget {
                   ),
                   elevation: MaterialStateProperty.all(4),
                 ),
-                onPressed: () {
+                onPressed: () async {
+                  if (BluetoothManager.instance.isDeviceConnected) {
+                    await BluetoothManager.instance.sendMessage("OFF");
+                  }
                   Navigator.popUntil(context, (route) => route.isFirst);
                 },
                 child: const Text(
