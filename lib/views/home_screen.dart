@@ -99,27 +99,6 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: Image.asset("assets/dash.png"),
               ),
-              const SizedBox(
-                height: 30,
-              ),
-              Text(
-      'Current ppm Value: $ppmValue',
-      style: TextStyle(color: Colors.white, fontSize: 16),
-    ),
-    const SizedBox(
-                height: 10,
-              ),
-    Text(
-      'Current ammonia Value: $ammoniaValue',
-      style: TextStyle(color: Colors.white, fontSize: 16),
-    ),
-    const SizedBox(
-                height: 10,
-              ),
-    Text(
-      'Current pH Value: $phValue',
-      style: TextStyle(color: Colors.white, fontSize: 16),
-    ),
         const SizedBox(
                 height: 40,
               ),
@@ -177,9 +156,15 @@ class _HomePageState extends State<HomePage> {
                   return GestureDetector(
                     onTap: () async {
                       final String topicName = topicsData.topicName;
+                      String messageToSend = "ON"; 
                       if (BluetoothManager.instance.isDeviceConnected) {
-                      await BluetoothManager.instance.sendMessage("ON");
-                    }
+                        if (topicName == 'Milk') {
+                          messageToSend = "ON2";
+                        } else {
+                          messageToSend = "ON1";
+                        }
+                        await BluetoothManager.instance.sendMessage(messageToSend);
+                      }
                       Navigator.push(
                         context,
                         MaterialPageRoute(

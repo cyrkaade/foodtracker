@@ -30,21 +30,21 @@ class _LoadingWidgetState extends State<LoadingWidget> {
   late final StreamSubscription<double> _phSubscription;
   late final StreamSubscription<double> _ammoniaSubscription;
 
-@override
+  @override
   void initState() {
     super.initState();
     _ppmSubscription = widget.ppmStream.listen((value) => updateValue(value, 'ppm'));
-    _ammoniaSubscription = widget.ammoniaStream.listen((value) => updateValue(value, 'ammonia')); // Listen for ammonia
+    _ammoniaSubscription = widget.ammoniaStream.listen((value) => updateValue(value, 'ammonia'));
     _phSubscription = widget.phStream.listen((value) => updateValue(value, 'ph'));
 
-    Future.delayed(Duration(seconds: 4), navigateToResults);
+    Future.delayed(Duration(seconds: 30), navigateToResults);
   }
 
   void updateValue(double value, String type) {
     if (mounted) {
       setState(() {
         if (type == 'ppm') latestPpmValue = value;
-        else if (type == 'ammonia') latestAmmoniaValue = value; // Update ammonia
+        else if (type == 'ammonia') latestAmmoniaValue = value;
         else if (type == 'ph') latestPhValue = value;
       });
     }
@@ -56,7 +56,7 @@ class _LoadingWidgetState extends State<LoadingWidget> {
       MaterialPageRoute(
         builder: (context) => ResultsScreen(
           ppmValue: latestPpmValue,
-          ammoniaValue: latestAmmoniaValue, // Pass ammonia
+          ammoniaValue: latestAmmoniaValue,
           phValue: latestPhValue,
           whichTopic: widget.whichTopic,
         ),
@@ -64,53 +64,62 @@ class _LoadingWidgetState extends State<LoadingWidget> {
     );
   }
 
-
   @override
   void dispose() {
     _ppmSubscription.cancel();
-    _ammoniaSubscription.cancel(); // Dispose ammonia subscription
+    _ammoniaSubscription.cancel();
     _phSubscription.cancel();
     super.dispose();
   }
 
-void navigateToResultScreen() {
-  Navigator.pushReplacement(
-    context,
-    MaterialPageRoute(
-      builder: (context) => ResultsScreen(
-        ppmValue: latestPpmValue,
-        ammoniaValue: latestAmmoniaValue,
-        phValue: latestPhValue,
-        whichTopic: widget.whichTopic, // Assuming this is not used for now
-      ),
-    ),
-  );
-}
-
   @override
   Widget build(BuildContext context) {
+    // Determine which text to display based on whichTopic
+    String displayText;
+    if (widget.whichTopic == "Milk") {
+      displayText = 'PH: ${latestPhValue.toStringAsFixed(2)}\n'
+                     'PPM: ${latestPpmValue.toStringAsFixed(2)}';
+    } else {
+      displayText = 'Ammonia: ${latestAmmoniaValue.toStringAsFixed(2)}';
+    }
+
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Lottie.asset(
-              'assets/loading.json',
-              width: 200,
-              height: 200,
-              fit: BoxFit.cover,
+      body: Stack(
+        children: [
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Lottie.asset(
+                  'assets/loading.json',
+                  width: 200,
+                  height: 200,
+                  fit: BoxFit.cover,
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  'Checking... Please, wait a second.',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 16),
-            Text(
-              'Checking... Please, wait a second.',
+          ),
+          Positioned(
+            right: 10,
+            bottom: 10,
+            child: Text(
+              displayText,
               style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
                 color: Colors.black,
+                fontWeight: FontWeight.bold,
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
