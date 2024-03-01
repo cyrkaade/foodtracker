@@ -23,7 +23,7 @@ class ResultsCard extends StatelessWidget {
     // Determine freshness based on the topic and ppmValue
     bool isFresh;
     if (whichTopic == "Milk") {
-      isFresh = ppmValue < 2000 && phValue > 6.5; // For Milk, check if less than 2000
+      isFresh = ppmValue < 2000 && phValue > 6.4; // For Milk, check if less than 2000
     } else {
       isFresh = ammoniaValue < 15; // For Beef, Chicken, and Horse, check if less than 15
     }

@@ -119,10 +119,12 @@ Future<void> _connect(BluetoothDevice device) async {
       print('Connected to the device');
 
       setState(() {
-        this.connection = connection;
-        this.connectedDeviceAddress = device.address; // Assuming you declare this variable somewhere
-        isConnecting = false;
-      });
+      this.connection = connection;
+      BluetoothManager.instance.connection = connection; // Update the central manager
+      BluetoothManager.instance.isConnected.add(true); // Notify listeners of the connection
+      this.connectedDeviceAddress = device.address; // Store connected device address
+      isConnecting = false;
+    });
 
       // Listen to data coming from Bluetooth
 connection.input?.listen((Uint8List data) {
@@ -152,6 +154,7 @@ connection.input?.listen((Uint8List data) {
       if (this.mounted) { // Check if the widget is still in the widget tree
         setState(() {
           isConnecting = false;
+          BluetoothManager.instance.isConnected.add(false);
         });
       }
     }
@@ -187,65 +190,66 @@ Widget build(BuildContext context) {
           // Your refresh button logic here
         ],
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: devices.length,
-              itemBuilder: (context, index) {
-                BluetoothDevice device = devices[index];
-                return StreamBuilder<bool>(
-                  stream: BluetoothManager.instance.isConnected.stream,
-                  builder: (context, snapshot) {
-                    bool isConnected = snapshot.data ?? false;
-                    // Check against the stored connectedDeviceAddress
-                    bool deviceIsConnected = isConnected && BluetoothManager.instance.connectedDeviceAddress == device.address;
-                    return ListTile(
-                      leading: Icon(Icons.bluetooth),
-                      title: Text(device.name ?? "Unknown Device"),
-                      subtitle: Text(device.address),
-                      trailing: Icon(deviceIsConnected ? Icons.check_circle : Icons.check_circle_outline),
-                      onTap: deviceIsConnected ? null : () => _connect(device),
-                    );
-                  },
-                );
-              },
-            ),
-          ),
-          // Dynamically show the message field if a device is connected
-          StreamBuilder<bool>(
-            stream: BluetoothManager.instance.isConnected.stream,
-            builder: (context, snapshot) {
-              bool isConnected = snapshot.data ?? false;
-              if (isConnected) {
-                return Column(
-                  children: [
-                    TextField(
-                      controller: textEditingController,
-                      decoration: InputDecoration(
-                        labelText: "Send a message",
-                        suffixIcon: IconButton(
-                          icon: Icon(Icons.send),
-                          onPressed: () => _sendMessage(textEditingController.text),
-                        ),
+    body: Column(
+      children: [
+        Expanded(
+          child: ListView.builder(
+          itemCount: devices.length,
+            itemBuilder: (context, index) {
+              BluetoothDevice device = devices[index];
+              return StreamBuilder<bool>(
+                stream: BluetoothManager.instance.isConnected.stream,
+                builder: (context, snapshot) {
+                  bool isConnected = snapshot.data ?? false;
+                  // Check against the stored connectedDeviceAddress
+                  bool deviceIsConnected = isConnected && BluetoothManager.instance.connectedDeviceAddress == device.address;
+                  return ListTile(
+                    leading: Icon(Icons.bluetooth),
+                    title: Text(device.name ?? "Unknown Device"),
+                    subtitle: Text(device.address),
+                    trailing: Text(deviceIsConnected ? "Connected" : "Not connected"),
+                    onTap: deviceIsConnected ? null : () => _connect(device),
+                  );
+                },
+                  );
+                },
+              ),
+        ),
+
+        // Dynamically show the message field if a device is connected
+        StreamBuilder<bool>(
+          stream: BluetoothManager.instance.isConnected.stream,
+          builder: (context, snapshot) {
+            bool isConnected = snapshot.data ?? false;
+            if (isConnected) {
+              return Column(
+                children: [
+                  TextField(
+                    controller: textEditingController,
+                    decoration: InputDecoration(
+                      labelText: "Send a message",
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.send),
+                        onPressed: () => _sendMessage(textEditingController.text),
+                      )
                       ),
-                    ),
-                    StreamBuilder<String>(
-                      stream: streamController.stream,
-                      builder: (context, snapshot) {
-                        return Text(snapshot.hasData ? snapshot.data! : "");
-                      },
-                    ),
-                  ],
-                );
-              } else {
-                return Container(); // Return an empty container if not connected
-              }
-            },
-          ),
-        ],
-      ),
+                  ),
+                  StreamBuilder<String>(
+                    stream: streamController.stream,
+                    builder: (context, snapshot) {
+                      return Text(snapshot.hasData ? snapshot.data! : "");
+                    },
+                  ),
+                ],
+              );
+            } else {
+              return Container(); // Return an empty container if not connected
+            }
+          },
+        ),
+      ],
     ),
+    )
   );
 }
 }

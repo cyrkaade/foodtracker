@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flashcards_quiz/views/results_screen.dart';
+import 'package:flashcards_quiz/views/home_screen.dart';
 
 class LoadingWidget extends StatefulWidget {
   final Stream<double> ppmStream;
@@ -84,28 +85,38 @@ class _LoadingWidgetState extends State<LoadingWidget> {
     }
 
     return Scaffold(
-      body: Stack(
-        children: [
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Lottie.asset(
-                  'assets/loading.json',
-                  width: 200,
-                  height: 200,
-                  fit: BoxFit.cover,
-                ),
-                const SizedBox(height: 16),
-                Text(
-                  'Checking... Please, wait a second.',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Expanded(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Lottie.asset(
+                    'assets/loading.json',
+                    width: 200,
+                    height: 200,
+                    fit: BoxFit.cover,
                   ),
-                ),
-              ],
+                  const SizedBox(height: 16),
+                  Text(
+                    'Checking... Please, wait a second.',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  SizedBox(height: 20), // Add some space before the cancel button
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => HomePage()));
+                    },
+                    child: Text('Cancel'),
+                  ),
+                ],
+              ),
             ),
           ),
           Positioned(
